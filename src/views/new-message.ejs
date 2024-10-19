@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>New message</title>
+  </head>
+  <body>
+    <h1>New Message</h1>
+    <form action="/message" method="POST">
+      <label for="title">Title</label>
+      <input
+        id="title"
+        name="title"
+        placeholder="title"
+        type="text"
+        maxlength="30"
+        required
+      />
+      <label for="messageBody">Message body</label>
+      <input
+        id="messageBody"
+        name="messageBody"
+        placeholder="message body"
+        type="text"
+        required
+      />
+      <button>Send</button>
+    </form>
+  </body>
+</html>
