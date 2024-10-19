@@ -9,6 +9,9 @@ router.get("/", async (req, res) => {
 router.get("/sign-up", async (req, res) => {
   res.render("sign-up-form");
 });
+router.get("/message", async (req, res) => {
+  res.render("new-message");
+});
 
 router.post("/sign-up", userController.createUser);
 router.post("/message", userController.createMessage);
