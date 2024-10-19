@@ -1,6 +1,8 @@
 const db = require("../db/queries");
 
 function createUser(req, res) {
+  // TODO: Adicionar segurança de senha
+  // TODO: Adicionar confirmação de senha
   const { username, password } = req.body;
   db.createUser(username, password);
 }
