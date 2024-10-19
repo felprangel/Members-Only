@@ -5,7 +5,7 @@ const router = require("./src/routes/router");
 const passport = require("passport");
 
 const app = express();
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "src/views"));
 app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
