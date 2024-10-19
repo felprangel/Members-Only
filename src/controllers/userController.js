@@ -1,10 +1,19 @@
 const db = require("../db/queries");
 
-function createUser(req, res) {
-  // TODO: Adicionar segurança de senha
+async function createUser(req, res) {
   // TODO: Adicionar confirmação de senha
   const { username, password } = req.body;
-  db.createUser(username, password);
+  try {
+    bcrypt.hash(password, 10, async (err, hashedPassword) => {
+      if (err) {
+        throw new Error(err);
+      }
+      await db.createUser(username, hashedPassword);
+      res.redirect("/");
+    });
+  } catch (err) {
+    return next(err);
+  }
 }
 
 function createMessage(req, res) {
