@@ -17,6 +17,8 @@ router.get("/message", async (req, res) => {
 });
 
 router.post("/sign-up", userController.createUser);
+router.post("/login", userController.login);
+router.get("/logout", userController.logout);
 router.post("/message", userController.createMessage);
 
 module.exports = router;
