@@ -17,11 +17,27 @@ async function createUser(req, res) {
   }
 }
 
-function createMessage(req, res) {
+function login(req, res) {
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/",
+  });
+}
+
+function logout(req, res, next) {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+}
+
+async function createMessage(req, res) {
   // TODO: Adicionar validação de autenticação
   // TODO: Adicionar envio do id do usuário
   const { title, messageBody } = req.body;
-  db.createMessage(title, messageBody);
+  await db.createMessage(title, messageBody);
 }
 
 passport.use(
@@ -59,5 +75,7 @@ passport.deserializeUser(async (id, done) => {
 
 module.exports = {
   createUser,
+  login,
+  logout,
   createMessage,
 };
