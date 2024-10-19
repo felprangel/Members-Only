@@ -7,13 +7,9 @@ async function createUser(req, res, next) {
   // TODO: Adicionar confirmação de senha
   const { username, password } = req.body;
   try {
-    bcrypt.hash(password, 10, async (err, hashedPassword) => {
-      if (err) {
-        throw new Error(err);
-      }
-      await db.createUser(username, hashedPassword);
-      res.redirect("/");
-    });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await db.createUser(username, hashedPassword);
+    res.redirect("/");
   } catch (err) {
     return next(err);
   }
