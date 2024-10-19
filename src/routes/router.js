@@ -3,8 +3,8 @@ const userController = require("../controllers/userController");
 
 const router = Router();
 
-router.get("/", async (req, res) => {
-  res.render("index");
+router.get("/", (req, res) => {
+  res.render("index", { user: req.user });
 });
 router.get("/sign-up", async (req, res) => {
   res.render("sign-up-form");
