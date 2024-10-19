@@ -8,5 +8,6 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/sign-up", userController.createUser);
+router.post("/message", userController.createMessage);
 
 module.exports = router;
