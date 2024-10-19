@@ -3,7 +3,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 const db = require("../db/queries");
 
-async function createUser(req, res) {
+async function createUser(req, res, next) {
   // TODO: Adicionar confirmação de senha
   const { username, password } = req.body;
   try {
